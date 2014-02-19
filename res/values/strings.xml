@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Má oe</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Trabalho VB</string>
+    <string name="startGameBtn">Play</string>
+    <string name="soundOptionBtn">Sound</string>
+    <string name="title_activity_game_scene">Má oe</string>
+    <string name="title_activity_end_game_scene">Má oe</string>
+    <string name="endGameMsg"></string>
+    <string name="gameSceneMsg">Qual é a Música, Maestro?</string>
+    <string name="textFieldHint">Digite o nome da Música!</string>
+    <string name="sendAnswerBtnLabel">Responder</string>
+    <string name="playMusicBtnLabel">Play</string>
+    <string name="nextBtnLabel">Next</string>
+    <string name="retryBtnLabel">Retry</string>
+    <string name="menuBtnLabel">Menu</string>
+    <string name="title_activity_select_package_scene">SelectPackageScene</string>
+
+</resources>
