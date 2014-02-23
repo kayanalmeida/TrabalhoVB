@@ -51,7 +51,10 @@ public class MusicArray {
 
 	public static void addMusicToMap(String musicName) {
 		String[] tempMusicData = musicName.split("_");
-		if (gameMusics.get(tempMusicData) == null) {
+		if (gameMusics == null){
+			gameMusics = new HashMap<String, ArrayList<Music>>() ;
+		}
+		if (gameMusics.get(tempMusicData[0]) == null) {
 			gameMusics.put(tempMusicData[0], new ArrayList<Music>() );
 		}
 		
@@ -91,7 +94,6 @@ public class MusicArray {
 		 String[] musics;
 		try {
 			musics = mngr.list("music");
-			gameMusics = new HashMap<String, ArrayList<Music>>() ;
 //			musicsOfGame = new Music[musics.length] ;
 		   for (int ii = 0; ii < musics.length; ii++) {
 		        String fileOutput = musics[ii];

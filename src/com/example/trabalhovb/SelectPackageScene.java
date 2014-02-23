@@ -4,21 +4,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.example.gamelogic.MusicArray;
-
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.gamelogic.GameLogic;
+import com.example.gamelogic.MusicArray;
+
 public class SelectPackageScene extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		overridePendingTransition(R.anim.activity_fade_open,R.anim.activity_fade_close);
 		setContentView(R.layout.activity_select_package_scene);
 	    final ListView listview = (ListView) findViewById(R.id.gameList);
 	    
@@ -43,11 +46,20 @@ public class SelectPackageScene extends Activity {
 
 	      @Override
 	      public void onItemClick(AdapterView<?> parent, final View view,
-	          int position, long id) {
+	          int position, long id) {	
+			  GameLogic.currentPackage = adapter.getItem(position);
+			  GameLogic.currentLevel = 0;
+			  startGame();
 	      }
 
 	    });
+
 	  }
+	
+	public void startGame(){
+		Intent intent = new Intent(this, GameSceneActivity.class);
+    	startActivity(intent);
+	}
 
 	  private class StableArrayAdapter extends ArrayAdapter<String> {
 

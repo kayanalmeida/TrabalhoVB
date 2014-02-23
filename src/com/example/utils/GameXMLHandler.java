@@ -109,22 +109,18 @@ public class GameXMLHandler {
 			NodeList pList = doc.getElementsByTagName("package");
 			
 //			MusicArray.musicsOfGame = new Music[nList.getLength()] ;	
-            System.out.println("tamanho da nlist  ->" + pList.getLength());
             
 			for (int tempP = 0; tempP < pList.getLength(); tempP++) {
 				Node nNode = pList.item(tempP);
 				Element nElement = (Element) nNode;
 				NodeList nList = nNode.getChildNodes();
-				
 				for (int tempM = 0; tempM < nList.getLength(); tempM++) {
-			 
 					Node mNode = nList.item(tempM);
-					
 					if (mNode.getNodeType() == Node.ELEMENT_NODE) {
-			 
 						Element eElement = (Element) mNode;
-						MusicArray.addMusicToMap( nElement.getAttribute("packagename")  + "_" + eElement.getAttribute("name")+ "_" + eElement.getAttribute("artist"));
-						System.out.println("First Name : " + eElement.getElementsByTagName("firstname").item(0).getTextContent());
+						MusicArray.addMusicToMap( nElement.getAttribute("packagename")  + "_" +
+						eElement.getAttribute("artist")+ "_" + eElement.getAttribute("name"));
+						
 					}
 				}
 			}
