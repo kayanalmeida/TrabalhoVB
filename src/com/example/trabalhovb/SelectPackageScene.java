@@ -30,7 +30,8 @@ public class SelectPackageScene extends Activity {
 	    int ii = 0;
 	    for (String key : MusicArray.gameMusics.keySet())
 	    {
-	    	values[ii] = key ;
+	    	values[ii] = key.substring(0, 1).toUpperCase() 
+	    			+ key.substring(1);;
 	    	ii++;
 	    }
 
@@ -47,7 +48,7 @@ public class SelectPackageScene extends Activity {
 	      @Override
 	      public void onItemClick(AdapterView<?> parent, final View view,
 	          int position, long id) {	
-			  GameLogic.currentPackage = adapter.getItem(position);
+			  GameLogic.currentPackage = adapter.getItem(position).toLowerCase();
 			  GameLogic.currentLevel = 0;
 			  startGame();
 	      }
@@ -85,5 +86,11 @@ public class SelectPackageScene extends Activity {
 	    }
 
 	  }
-
+	  @Override
+		public void onBackPressed() {
+			Intent intent = new Intent(this,MenuScene.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+		    overridePendingTransition(R.anim.activity_fade_open,R.anim.activity_fade_close);
+		}
 	} 

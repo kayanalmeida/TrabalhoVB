@@ -113,12 +113,10 @@ public class GameSceneActivity extends Activity {
 
 	            @Override
 	            public void run() {
-	            	System.out.println("passei no run  " );
 	                runOnUiThread(new Runnable() {
 	                	
 	                    @Override
 	                    public void run() {
-	                    	System.out.println("passei aqui   " +(amoungToupdate * pBar.getProgress()) + "  duration  " +  duration );
 	                        if (!(amoungToupdate * pBar.getProgress() >= duration) && PlayerHandler.isPlaying ) {
 	                            int p = pBar.getProgress();
 	                            p += 1;

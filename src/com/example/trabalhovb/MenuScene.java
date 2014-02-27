@@ -23,7 +23,6 @@ public class MenuScene extends Activity {
 		overridePendingTransition(R.anim.activity_fade_open,R.anim.activity_fade_close);
 		setContentView(R.layout.activity_menu_scene);
 		Button startGameBtn = (Button) findViewById(R.id.startGameBtn);
-
 		startGameBtn.setOnClickListener(new OnClickListener()
 	    {
 	      public void onClick(View v)
