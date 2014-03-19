@@ -48,16 +48,20 @@ public class MusicArray {
 		    // handle exception
 		}
 	}
+	
+	public static void savePackage(String[] pckgArray) {
+		for (int i = 0; i < pckgArray.length;i++) {
+			if (gameMusics == null){
+				gameMusics = new HashMap<String, ArrayList<Music>>() ;
+			}
+			if (gameMusics.get(pckgArray[i].trim()) == null) {
+				gameMusics.put(pckgArray[i].trim(), new ArrayList<Music>() );
+			}
+		}
+	}
 
 	public static void addMusicToMap(String musicName) {
 		String[] tempMusicData = musicName.split("_");
-		if (gameMusics == null){
-			gameMusics = new HashMap<String, ArrayList<Music>>() ;
-		}
-		if (gameMusics.get(tempMusicData[0]) == null) {
-			gameMusics.put(tempMusicData[0], new ArrayList<Music>() );
-		}
-		
 		gameMusics.get(tempMusicData[0]).add(new Music(tempMusicData[2],tempMusicData[1],
 				Environment.getExternalStorageDirectory().getAbsolutePath()+
 				"/Android/data/com.example.trabalhovb/" + musicName));

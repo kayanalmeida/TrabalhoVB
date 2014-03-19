@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.gamelogic.GameLogic;
+import com.example.gamelogic.KeyboardHandler;
 import com.example.gamelogic.MusicArray;
 import com.example.gamelogic.PlayerHandler;
 //import android.widget.ProgressBar;
@@ -32,10 +33,13 @@ public class GameSceneActivity extends Activity {
 		overridePendingTransition(R.anim.activity_fade_open,R.anim.activity_fade_close);
 		
 		setContentView(R.layout.activity_game_scene);
-
+		
+		KeyboardHandler.getCorrectButtons(this, MusicArray.getMusic(
+				GameLogic.currentLevel, GameLogic.currentPackage ).getName());
+		
 		PlayerHandler.prepareSong(MusicArray.getMusic(GameLogic.currentLevel, GameLogic.currentPackage ).getPath());
 		PlayerHandler.mp.setOnPreparedListener(new OnPreparedListener(){
-
+		
 		    public void onPrepared(MediaPlayer mp) {
 //		    	updateProcessBar(mp);
 		    }    

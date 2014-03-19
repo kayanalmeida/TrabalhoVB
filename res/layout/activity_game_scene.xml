@@ -58,4 +58,14 @@
         android:layout_centerVertical="true"
         />
 
+    <LinearLayout
+        android:id="@+id/buttonSpace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/gameSceneMsg"
+        android:layout_below="@+id/sendAnswerBtn"
+        android:layout_marginLeft="31dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+
 </RelativeLayout>
