@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -21,6 +22,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.gamelogic.GameLogic;
 import com.example.gamelogic.MusicArray;
@@ -33,12 +35,17 @@ public class MenuScene extends Activity {
 		super.onCreate(savedInstanceState);
 		overridePendingTransition(R.anim.activity_fade_open,R.anim.activity_fade_close);
 		setContentView(R.layout.activity_menu_scene);
+		TextView menuLabel = (TextView) findViewById(R.id.menuLabel);
+		Typeface t = Typeface.createFromAsset(getAssets(), "fonts/BoogieNightsShadowNF.ttf");
+		menuLabel.setTypeface(t);
+		menuLabel.setTextSize(80);
 		Button startGameBtn = (Button) findViewById(R.id.startGameBtn);
+//		 Typeface.createFromAsset(getAssets(), “fonts/HandmadeTypewriter.ttf”)
 		startGameBtn.setOnClickListener(new OnClickListener()
 	    {
 	      public void onClick(View v)
 	      {
-	    	  teste();
+	    	  startGame();
 	    	  //startGame(v);
 	      }
 	    });
@@ -47,7 +54,7 @@ public class MenuScene extends Activity {
 		
 	}
 	
-	public void teste(){
+	public void startGame(){
 		ConnectivityManager connMgr = (ConnectivityManager) 
 		        getSystemService(Context.CONNECTIVITY_SERVICE);
 		    NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -73,6 +80,7 @@ public class MenuScene extends Activity {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
+        	System.out.println(result.split("\\]")[0]);
         	MusicArray.savePackage(result.split("\\]")[0].split("\\[")[1].split(","));
         	File folder = new File(Environment.getExternalStorageDirectory() + "/Android/data/com.example.trabalhovb");
         	if (!folder.isDirectory()) {
@@ -139,13 +147,6 @@ public class MenuScene extends Activity {
 		GameLogic.currentLevel = Integer.parseInt(prefs.getString("current-level", null));
 		System.out.println("current level e last - > " + GameLogic.lastLevel+ " - " + GameLogic.currentLevel);
 		
-	}
-	
-    /** Called when the user clicks the Send button */
-    public void startGame(View view) {
-//    	
-    	
-    	
 	}
 
 	@Override

@@ -37,13 +37,13 @@ public final class R {
         public static final int gameList=0x7f09000c;
         public static final int gameSceneMsg=0x7f090007;
         public static final int menuBtn=0x7f090002;
+        public static final int menuLabel=0x7f09000a;
         public static final int musicProgressBar=0x7f090008;
         public static final int nextBtn=0x7f090003;
         public static final int playMusicBtn=0x7f090005;
         public static final int retryBtn=0x7f090001;
         public static final int sendAnswerBtn=0x7f090004;
         public static final int startGameBtn=0x7f09000b;
-        public static final int textView1=0x7f09000a;
     }
     public static final class layout {
         public static final int activity_end_game_scene=0x7f030000;
@@ -58,22 +58,23 @@ public final class R {
         public static final int select_package_scene=0x7f080003;
     }
     public static final class string {
-        public static final int action_settings=0x7f060001;
+        public static final int action_settings=0x7f060002;
         public static final int app_name=0x7f060000;
-        public static final int endGameMsg=0x7f060007;
-        public static final int gameSceneMsg=0x7f060008;
-        public static final int hello_world=0x7f060002;
-        public static final int menuBtnLabel=0x7f06000e;
-        public static final int nextBtnLabel=0x7f06000c;
-        public static final int playMusicBtnLabel=0x7f06000b;
-        public static final int retryBtnLabel=0x7f06000d;
-        public static final int sendAnswerBtnLabel=0x7f06000a;
-        public static final int soundOptionBtn=0x7f060004;
-        public static final int startGameBtn=0x7f060003;
-        public static final int textFieldHint=0x7f060009;
-        public static final int title_activity_end_game_scene=0x7f060006;
-        public static final int title_activity_game_scene=0x7f060005;
-        public static final int title_activity_select_package_scene=0x7f06000f;
+        public static final int endGameMsg=0x7f060008;
+        public static final int gameSceneMsg=0x7f060009;
+        public static final int hello_world=0x7f060003;
+        public static final int menuBtnLabel=0x7f06000f;
+        public static final int menu_label=0x7f060001;
+        public static final int nextBtnLabel=0x7f06000d;
+        public static final int playMusicBtnLabel=0x7f06000c;
+        public static final int retryBtnLabel=0x7f06000e;
+        public static final int sendAnswerBtnLabel=0x7f06000b;
+        public static final int soundOptionBtn=0x7f060005;
+        public static final int startGameBtn=0x7f060004;
+        public static final int textFieldHint=0x7f06000a;
+        public static final int title_activity_end_game_scene=0x7f060007;
+        public static final int title_activity_game_scene=0x7f060006;
+        public static final int title_activity_select_package_scene=0x7f060010;
     }
     public static final class style {
         /** 
