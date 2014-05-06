@@ -25,13 +25,13 @@ public class GameLogic {
 				currentLevel--;
 				System.out.println("Zerou o Jogo!");
 			}
+			System.out.println("--->"+currentLevel);
 			return true;
 		}
 		else {
 			return false;
 		}
 	}
-	
 	
 	
 //	public static Music getCurrentSong()

@@ -18,5 +18,12 @@
     <string name="retryBtnLabel">Retry</string>
     <string name="menuBtnLabel">Menu</string>
     <string name="title_activity_select_package_scene">SelectPackageScene</string>
+    <string name="cLvl"></string>
+    <string name="lLvl"></string>
+    <integer-array name="game_data_array">
+        <item>0</item>
+        <item>0</item> 
+    </integer-array>
+    
 
 </resources>

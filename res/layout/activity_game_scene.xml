@@ -9,35 +9,56 @@
     android:textAlignment="center"
     tools:context=".GameSceneActivity" >
 
-    <Button
-        android:id="@+id/sendAnswerBtn"
-        android:layout_width="wrap_content"
+    <ProgressBar
+        android:id="@+id/musicProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/gameSceneMsg"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="42dp"
-        android:text="@string/sendAnswerBtnLabel" />
+        android:layout_marginTop="58dp" />
 
     <Button
         android:id="@+id/playMusicBtn"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/sendAnswerBtn"
+        android:layout_below="@+id/musicProgressBar"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="18dp"
-        android:text="@string/playMusicBtnLabel" />
+        android:background="@drawable/ic_action_slideshow" />
 
-    <EditText
-        android:id="@+id/answerField"
+    <Button
+        android:id="@+id/AnswerBtn0"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/playMusicBtn"
-        android:layout_marginBottom="24dp"
-        android:ems="10"
-        android:hint="@string/textFieldHint"
-        android:inputType="textCapWords|textPersonName"
-        android:textAlignment="center" />
+        android:layout_above="@+id/AnswerBtn1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/sendAnswerBtnLabel" />
+
+    <Button
+        android:id="@+id/AnswerBtn1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/AnswerBtn3"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sendAnswerBtnLabel" />
+
+    <Button
+        android:id="@+id/AnswerBtn3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/AnswerBtn2"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sendAnswerBtnLabel" />
+
+    <Button
+        android:id="@+id/AnswerBtn2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/AnswerBtn3"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="14dp"
+        android:text="@string/sendAnswerBtnLabel" />
 
     <TextView
         android:id="@+id/gameSceneMsg"
@@ -45,27 +66,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="27dp"
         android:text="@string/gameSceneMsg"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ProgressBar
-        android:id="@+id/musicProgressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        />
-
-    <LinearLayout
-        android:id="@+id/buttonSpace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/gameSceneMsg"
-        android:layout_below="@+id/sendAnswerBtn"
-        android:layout_marginLeft="31dp"
-        android:orientation="vertical" >
-    </LinearLayout>
 
 </RelativeLayout>

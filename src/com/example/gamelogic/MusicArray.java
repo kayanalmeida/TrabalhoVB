@@ -6,7 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.http.util.ByteArrayBuffer;
@@ -21,21 +23,38 @@ public class MusicArray {
 //	public static Music[] musicsOfGame;
 	
 	public static Music getMusic(int level, String gamePackage){
-		if (level < gameMusics.size() &&  gameMusics.containsKey(gamePackage)  )  {
+		if (level < gameMusics.get(gamePackage).size() &&  gameMusics.containsKey(gamePackage)  )  {
 			return gameMusics.get(gamePackage).get(level);
 		}
 		else{
 			return null;
 		}
 	}
-	
+	public static List<String> getAnswers(int level, String gamePackage){
+		List<String> list = new ArrayList<String>();
+		String name = gameMusics.get(gamePackage).get(level).name ;
+//		name = name.substring(0, name.length() - 4);
+		list.add(name);
+		
+		List<Integer> indexList = new ArrayList<Integer>();
+		for(int i = 0; i < gameMusics.get(gamePackage).size() ; i++) {if (i!=level){indexList.add(i);}};
+		Collections.shuffle(indexList);
+		
+		for(int i = 0; i < 3; i++) {
+			name = gameMusics.get(gamePackage).get(indexList.get(i)).name;
+//			name = name.substring(0, name.length() - 4);
+			list.add(name);
+		}
+		Collections.shuffle(list);Collections.shuffle(list);
+		return list;
+	}
 	public static void saveToSDCard(byte[] bitmapdata, String musicName,int i){
 		File file = new File(Environment.getExternalStorageDirectory(),
 				"/Android/data/com.example.trabalhovb/" + musicName);
 		FileOutputStream fos;
 		
 		//create music java object
-//		int nameSeparator = musicName.indexOf("-");
+		//int nameSeparator = musicName.indexOf("-");
 		
 		addMusicToMap(musicName);
 
@@ -49,20 +68,32 @@ public class MusicArray {
 		}
 	}
 	
-	public static void savePackage(String[] pckgArray) {
-		for (int i = 0; i < pckgArray.length;i++) {
+	public static void savePackage(String pckgName) {
 			if (gameMusics == null){
 				gameMusics = new HashMap<String, ArrayList<Music>>() ;
 			}
-			if (gameMusics.get(pckgArray[i].trim()) == null) {
-				gameMusics.put(pckgArray[i].trim(), new ArrayList<Music>() );
+			if (gameMusics.get(pckgName.trim()) == null) {
+				gameMusics.put(pckgName.trim(), new ArrayList<Music>() );
 			}
-		}
 	}
 
 	public static void addMusicToMap(String musicName) {
 		String[] tempMusicData = musicName.split("_");
-		gameMusics.get(tempMusicData[0]).add(new Music(tempMusicData[2],tempMusicData[1],
+		savePackage(tempMusicData[0]);
+		String name = tempMusicData[2].substring(0, tempMusicData[2].length() - 4);
+		name = name.substring(0, 1).toUpperCase() + 
+				name.substring(1);
+		
+		for (int index = name.indexOf("-");
+			     index >= 0;
+			     index = name.indexOf("-", index + 1))
+			{
+			name = name.substring(0,index) + " "+ name.substring(index+1,index+2)
+					.toUpperCase() + name.substring(index+2,name.length()); 
+			}
+//		name.replace("-", " ");
+//		System.out.println("nome da musica------  "+ name);
+		gameMusics.get(tempMusicData[0]).add(new Music(name,tempMusicData[1],
 				Environment.getExternalStorageDirectory().getAbsolutePath()+
 				"/Android/data/com.example.trabalhovb/" + musicName));
 	}

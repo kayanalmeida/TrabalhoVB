@@ -12,10 +12,11 @@ public class PlayerHandler {
 
 	public static void prepareSong(String musicPath)
 	{
-		if (mp==null){mp = new MediaPlayer();mPath = musicPath;};
+		mPath = musicPath;
+		if (mp==null){mp = new MediaPlayer();};
 		try {
 			mp.reset();
-			mp.setDataSource(musicPath);
+			mp.setDataSource(mPath);
 			mp.prepare();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

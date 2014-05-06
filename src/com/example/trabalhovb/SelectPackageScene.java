@@ -31,7 +31,7 @@ public class SelectPackageScene extends Activity {
 	    for (String key : MusicArray.gameMusics.keySet())
 	    {
 	    	values[ii] = key.substring(0, 1).toUpperCase() 
-	    			+ key.substring(1);;
+	    			+ key.substring(1);
 	    	ii++;
 	    }
 

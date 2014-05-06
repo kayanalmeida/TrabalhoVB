@@ -11,7 +11,7 @@ public class KeyboardHandler {
 	public static void getCorrectButtons (Activity a, String musicName){
 		LinearLayout row = new LinearLayout(a);
         row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		for (int i = 0; i<musicName.length() ; i++)
+		for (int i = 0; i < musicName.length() ; i++)
 		{
 			String character = String.valueOf(musicName.charAt(i));
 			if (character != "") {
@@ -23,7 +23,7 @@ public class KeyboardHandler {
 		        System.out.println(character);
 			}
 		}
-		LinearLayout layout = (LinearLayout) a.findViewById(R.id.buttonSpace);
-		layout.addView(row);
+//		LinearLayout layout = (LinearLayout) a.findViewById(R.id.buttonSpace);
+//		layout.addView(row);
 	}
 }
