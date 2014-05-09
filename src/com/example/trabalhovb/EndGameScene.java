@@ -4,6 +4,7 @@ import com.example.gamelogic.GameLogic;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -20,14 +21,28 @@ public class EndGameScene extends Activity {
 		setContentView(R.layout.activity_end_game_scene);
 		
 		TextView endText = (TextView) findViewById(R.id.endGameMsg);
-		endText.setText("Game Over");
+		
+		Typeface t = Typeface.createFromAsset(getAssets(), "fonts/BoogieNightsShadowNF.ttf");
+		endText.setTypeface(t);
+		endText.setTextSize(40);
+		boolean advancedLvl = false;
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    endText.setText(extras.getString("END_SCENE_MESSAGE"));
+		    advancedLvl = extras.getBoolean("ANS_VAL");
+		}
+		
+//		endText.setText("Game Over");
 		
 		Button menuBtn = (Button) findViewById( R.id.menuBtn);
-		Button nextBtn = (Button) findViewById( R.id.nextBtn);
 		Button retryBtn = (Button) findViewById( R.id.retryBtn);
-		
+		Button nextBtn = (Button) findViewById( R.id.nextBtn);
+		nextBtn.setVisibility(View.INVISIBLE);
 	menuBtn.setOnClickListener(new OnClickListener(){public void onClick(View v){changeScene("menu");}});
-	nextBtn.setOnClickListener(new OnClickListener(){public void onClick(View v){changeScene("next");}});
+	if (advancedLvl){
+		nextBtn.setVisibility(View.VISIBLE);
+		nextBtn.setOnClickListener(new OnClickListener(){public void onClick(View v){changeScene("next");}});
+	}
 	retryBtn.setOnClickListener(new OnClickListener(){public void onClick(View v){changeScene("retry");}});
 	}
 		

@@ -8,23 +8,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:textAlignment="center"
     tools:context=".GameSceneActivity" >
-
-    <ProgressBar
-        android:id="@+id/musicProgressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/gameSceneMsg"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp" />
-
-    <Button
-        android:id="@+id/playMusicBtn"
+    
+      <TextView
+        android:id="@+id/gameSceneMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/musicProgressBar"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/ic_action_slideshow" />
+        android:layout_marginTop="27dp"
+        android:text="@string/gameSceneMsg"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
 
     <Button
         android:id="@+id/AnswerBtn0"
@@ -60,14 +54,23 @@
         android:layout_marginBottom="14dp"
         android:text="@string/sendAnswerBtnLabel" />
 
-    <TextView
-        android:id="@+id/gameSceneMsg"
+  
+    <ProgressBar
+        android:id="@+id/musicProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/AnswerBtn0"
+        android:layout_below="@+id/gameSceneMsg"
+        android:layout_marginTop="40dp" />
+
+    <Button
+        android:id="@+id/playMusicBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/musicProgressBar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:text="@string/gameSceneMsg"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_action_slideshow" />
 
 </RelativeLayout>

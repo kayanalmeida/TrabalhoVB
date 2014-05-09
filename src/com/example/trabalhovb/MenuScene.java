@@ -56,6 +56,7 @@ public class MenuScene extends Activity {
 	    		  public void run()
 	    		  {
 	    		    // do the thing that takes a long time
+	    			  MusicArray.resetMap();
 	    			  getGameLevel();
 	    		    runOnUiThread(new Runnable() {
 	    		      @Override

@@ -33,7 +33,6 @@ public class MusicArray {
 	public static List<String> getAnswers(int level, String gamePackage){
 		List<String> list = new ArrayList<String>();
 		String name = gameMusics.get(gamePackage).get(level).name ;
-//		name = name.substring(0, name.length() - 4);
 		list.add(name);
 		
 		List<Integer> indexList = new ArrayList<Integer>();
@@ -42,7 +41,6 @@ public class MusicArray {
 		
 		for(int i = 0; i < 3; i++) {
 			name = gameMusics.get(gamePackage).get(indexList.get(i)).name;
-//			name = name.substring(0, name.length() - 4);
 			list.add(name);
 		}
 		Collections.shuffle(list);Collections.shuffle(list);
@@ -98,6 +96,17 @@ public class MusicArray {
 				"/Android/data/com.example.trabalhovb/" + musicName));
 	}
 	
+	public static void addMusicToMap(String pkg,String artist,String name,String path) {
+		savePackage(pkg);
+		gameMusics.get(pkg).add(new Music(name,artist,path));
+	}
+	
+	public static void resetMap(){
+		if (gameMusics != null ){
+		gameMusics.clear();
+		}
+	}
+	
 	public static ByteArrayBuffer openAudioFromFolder(AssetManager mngr, String musicName)
 	{
 		ByteArrayBuffer baf = new ByteArrayBuffer(1024); 
@@ -120,9 +129,6 @@ public class MusicArray {
 		return baf;
 	}
 	
-	public static void openAudioFromXML(){
-		GameXMLHandler.readMusicFromXML();
-	}
 
 	public static void loadMusicOnDevice(AssetManager mngr) {
 		//lists all the files into an array

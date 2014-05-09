@@ -35,8 +35,6 @@ public class GameSceneActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		overridePendingTransition(R.anim.activity_fade_open,R.anim.activity_fade_close);
 		setContentView(R.layout.activity_game_scene);
-		
-		
 		PlayerHandler.prepareSong(
 				MusicArray.getMusic(GameLogic.currentLevel, GameLogic.currentPackage ).getPath()
 				);
@@ -78,10 +76,12 @@ public class GameSceneActivity extends Activity {
 		
 	}
 
-	public void endGame(View v) {
+	public void endGame(View v, String msg,boolean pass) {
 		
 	PlayerHandler.releasePlayer();
 	  Intent intent = new Intent(this, EndGameScene.class);
+	  intent.putExtra("END_SCENE_MESSAGE", msg);
+	  intent.putExtra("ANS_VAL", pass);
   	  startActivity(intent);
 	}
 	
@@ -145,16 +145,19 @@ public class GameSceneActivity extends Activity {
 						PlayerHandler.stopSong();
 						System.out.println(MusicArray.getMusic(GameLogic.currentLevel,GameLogic.currentPackage).getName());
 						String answerString = btn.getText().toString();
+						String msg = "Game Over, You Missed!";
+						boolean pass = false;
 						if (GameLogic.advanceLevel(MusicArray.getMusic(GameLogic.currentLevel,GameLogic.currentPackage).getName(),answerString)){ 
 							//retorna true se o jogador acertar
-							System.out.println("respondi corretamente");
 							 SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
 							 SharedPreferences.Editor editor = sharedPref.edit();
 							 editor.putString(getString(R.string.cLvl),""+ GameLogic.currentLevel );
 							 editor.putString(getString(R.string.lLvl), ""+GameLogic.lastLevel );
 							 editor.commit();
+							 msg = "Congratulations, Correct Answer!";
+							 pass = true;
 							 }
-						endGame(v);
+						endGame(v,msg, pass);
 						}
 					});
 			}

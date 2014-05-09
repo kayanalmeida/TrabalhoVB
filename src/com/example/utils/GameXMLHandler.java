@@ -119,8 +119,8 @@ public class GameXMLHandler {
 					if (mNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element eElement = (Element) mNode;
 						System.out.println(eElement.getAttribute("name"));
-						MusicArray.addMusicToMap( nElement.getAttribute("packagename")  + "_" +
-						eElement.getAttribute("artist")+ "_" + eElement.getAttribute("name"));
+						MusicArray.addMusicToMap( nElement.getAttribute("packagename"),eElement.getAttribute("artist")
+								,eElement.getAttribute("name"),eElement.getAttribute("path"));
 						
 					}
 				}

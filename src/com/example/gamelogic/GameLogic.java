@@ -12,7 +12,7 @@ public class GameLogic {
 	public static boolean advanceLevel(String correctName,String input ) {
 		input = input.toLowerCase().replaceAll("\\s+","");
 		correctName = correctName.toLowerCase().replaceAll("\\s+","");
-		if ((input+".mp3").equals(correctName)) {
+		if ((input).equals(correctName)) {
 			currentLevel++;
 			if ((lastLevel < currentLevel) && 
 					(currentLevel <
