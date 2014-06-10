@@ -1,109 +1,27 @@
 package com.example.gamelogic;
 
 import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.http.util.ByteArrayBuffer;
 
 import android.content.res.AssetManager;
-import android.os.Environment;
 
-import com.example.utils.GameXMLHandler;
 
 public class MusicArray {
-	public static Map<String, ArrayList<Music>> gameMusics;
-//	public static Music[] musicsOfGame;
-	
-	public static Music getMusic(int level, String gamePackage){
-		if (level < gameMusics.get(gamePackage).size() &&  gameMusics.containsKey(gamePackage)  )  {
-			return gameMusics.get(gamePackage).get(level);
-		}
-		else{
-			return null;
-		}
-	}
-	public static List<String> getAnswers(int level, String gamePackage){
-		List<String> list = new ArrayList<String>();
-		String name = gameMusics.get(gamePackage).get(level).name ;
-		list.add(name);
-		
-		List<Integer> indexList = new ArrayList<Integer>();
-		for(int i = 0; i < gameMusics.get(gamePackage).size() ; i++) {if (i!=level){indexList.add(i);}};
-		Collections.shuffle(indexList);
-		
-		for(int i = 0; i < 3; i++) {
-			name = gameMusics.get(gamePackage).get(indexList.get(i)).name;
-			list.add(name);
-		}
-		Collections.shuffle(list);Collections.shuffle(list);
-		return list;
-	}
-	public static void saveToSDCard(byte[] bitmapdata, String musicName,int i){
-		File file = new File(Environment.getExternalStorageDirectory(),
-				"/Android/data/com.example.trabalhovb/" + musicName);
-		FileOutputStream fos;
-		
-		//create music java object
-		//int nameSeparator = musicName.indexOf("-");
-		
-		addMusicToMap(musicName);
-
-		try {
-		    fos = new FileOutputStream(file);
-		    fos.write(bitmapdata);
-		    fos.flush();
-		    fos.close();
-		} catch (IOException e) {
-		    // handle exception
-		}
-	}
-	
-	public static void savePackage(String pckgName) {
-			if (gameMusics == null){
-				gameMusics = new HashMap<String, ArrayList<Music>>() ;
-			}
-			if (gameMusics.get(pckgName.trim()) == null) {
-				gameMusics.put(pckgName.trim(), new ArrayList<Music>() );
-			}
-	}
-
-	public static void addMusicToMap(String musicName) {
-		String[] tempMusicData = musicName.split("_");
-		savePackage(tempMusicData[0]);
-		String name = tempMusicData[2].substring(0, tempMusicData[2].length() - 4);
-		name = name.substring(0, 1).toUpperCase() + 
-				name.substring(1);
-		
-		for (int index = name.indexOf("-");
-			     index >= 0;
-			     index = name.indexOf("-", index + 1))
-			{
-			name = name.substring(0,index) + " "+ name.substring(index+1,index+2)
-					.toUpperCase() + name.substring(index+2,name.length()); 
-			}
-//		name.replace("-", " ");
-//		System.out.println("nome da musica------  "+ name);
-		gameMusics.get(tempMusicData[0]).add(new Music(name,tempMusicData[1],
-				Environment.getExternalStorageDirectory().getAbsolutePath()+
-				"/Android/data/com.example.trabalhovb/" + musicName));
-	}
-	
-	public static void addMusicToMap(String pkg,String artist,String name,String path) {
-		savePackage(pkg);
-		gameMusics.get(pkg).add(new Music(name,artist,path));
-	}
+	public static Map<String, Integer > gameIds;
+	public static Map<String, ArrayList<Integer> > gameMusicsIds;
 	
 	public static void resetMap(){
-		if (gameMusics != null ){
-		gameMusics.clear();
+		if (gameMusicsIds != null ){
+			gameMusicsIds.clear();
+		}
+		if (gameIds != null ){
+			gameIds.clear();
 		}
 	}
 	
@@ -129,24 +47,51 @@ public class MusicArray {
 		return baf;
 	}
 	
-
-	public static void loadMusicOnDevice(AssetManager mngr) {
-		//lists all the files into an array
-		 String[] musics;
-		try {
-			musics = mngr.list("music");
-//			musicsOfGame = new Music[musics.length] ;
-		   for (int ii = 0; ii < musics.length; ii++) {
-		        String fileOutput = musics[ii];
-				ByteArrayBuffer baf = openAudioFromFolder(mngr, fileOutput);
-				saveToSDCard(baf.toByteArray(),fileOutput,ii); 
-		        }
-//		   System.out.println("TAMANHO FINAL ->" + musicsOfGame.length);
-		   GameXMLHandler.saveMusicToXML(gameMusics);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//	functions after the node js migration....
+	public static void setGames(String games) {
+		// Gets from cloud the available games...
+		if (gameIds == null){
+			gameIds = new HashMap<String, Integer >() ;
 		}
+		else{
+			gameIds.clear();
+		}
+		if (!games.trim().isEmpty())
+		{
+			String[] games_array = games.split("/");
+			for (int i = 0; i < games_array.length ; i += 2) {
+//				System.out.println(games_array[i+1]);
+				gameIds.put(games_array[i].trim().toLowerCase(), Integer.parseInt(games_array[i+1].trim()));
+			};
+		}
+	}
+	public static int getGameId() {
+		// TODO Auto-generated method stub
+		int id = 0;
+		id = gameIds.get(GameLogic.currentPackage);
+		return id;
+		
+	}
+	
+	public static int getCurrentMusicId() {
+		// TODO Auto-generated method stub
+		int id = 0;
+		id = gameMusicsIds.get(GameLogic.currentPackage).get(GameLogic.currentLevel);
+		return id;
+	}
+	
+	public static void setGameMusics(String musicIds) {
+		// TODO Auto-generated method stub
+		String[] mId = musicIds.split("/");
+		if (gameMusicsIds == null){
+			gameMusicsIds = new HashMap<String, ArrayList<Integer>>() ;
+		}
+		if (gameMusicsIds.get(GameLogic.currentPackage) == null) {
+			gameMusicsIds.put(GameLogic.currentPackage, new ArrayList<Integer>() );
+		}
+		for (int i = 0; i < mId.length ; i++) {
+			gameMusicsIds.get(GameLogic.currentPackage).add(Integer.parseInt(mId[i].trim()));
+		};
 	}
 }
 

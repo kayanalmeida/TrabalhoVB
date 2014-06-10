@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class EndGameScene extends Activity {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,11 +27,9 @@ public class EndGameScene extends Activity {
 		boolean advancedLvl = false;
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
-		    endText.setText(extras.getString("END_SCENE_MESSAGE"));
+		    endText.setText("Congratulations, Correct Answer!");
 		    advancedLvl = extras.getBoolean("ANS_VAL");
 		}
-		
-//		endText.setText("Game Over");
 		
 		Button menuBtn = (Button) findViewById( R.id.menuBtn);
 		Button retryBtn = (Button) findViewById( R.id.retryBtn);
@@ -52,7 +49,7 @@ public class EndGameScene extends Activity {
 				intent = new Intent(this,MenuScene.class);
 			}
 			else if (scene.equals("retry")){
-				if (GameLogic.currentLevel>0){GameLogic.currentLevel--;}
+				if (GameLogic.currentLevel>0 ){GameLogic.currentLevel--;}
 				intent = new Intent(this, GameSceneActivity.class);
 			}
 			else if (scene.equals("next")){

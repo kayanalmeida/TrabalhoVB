@@ -7,37 +7,29 @@ public class GameLogic {
 	public static int lastLevel;
 	public static int currentLevel;
 	public static String currentPackage;
+	public static String correctAns = "";
 	
 	//Verifies if artist/song name is valid
-	public static boolean advanceLevel(String correctName,String input ) {
+	public static boolean advanceLevel(String input ) {
 		input = input.toLowerCase().replaceAll("\\s+","");
-		correctName = correctName.toLowerCase().replaceAll("\\s+","");
-		if ((input).equals(correctName)) {
+		correctAns = correctAns.toLowerCase().replaceAll("\\s+","");
+		if ((input).equals(correctAns)) {
 			currentLevel++;
 			if ((lastLevel < currentLevel) && 
 					(currentLevel <
-							MusicArray.gameMusics.get(currentPackage).size())){
+							MusicArray.gameMusicsIds.get(currentPackage).size())){
 				lastLevel++;
-				System.out.println("Passou de fase");
 			}
 			else if (currentLevel == 
-					MusicArray.gameMusics.get(currentPackage).size()) {
+					MusicArray.gameMusicsIds.get(currentPackage).size()) {
 				currentLevel--;
 				System.out.println("Zerou o Jogo!");
 			}
-			System.out.println("--->"+currentLevel);
 			return true;
 		}
 		else {
 			return false;
 		}
 	}
-	
-	
-//	public static Music getCurrentSong()
-//	{
-//		Music music = MusicArray.getMusic(lastLevel);
-//		return music;
-//	}
 	
 }

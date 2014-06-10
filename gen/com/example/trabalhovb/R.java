@@ -38,7 +38,7 @@ public final class R {
         public static final int AnswerBtn1=0x7f0a0006;
         public static final int AnswerBtn2=0x7f0a0008;
         public static final int AnswerBtn3=0x7f0a0007;
-        public static final int action_settings=0x7f0a000f;
+        public static final int action_settings=0x7f0a0010;
         public static final int button1=0x7f0a000e;
         public static final int endGameMsg=0x7f0a0000;
         public static final int gameList=0x7f0a000d;
@@ -50,6 +50,7 @@ public final class R {
         public static final int playMusicBtn=0x7f0a000a;
         public static final int retryBtn=0x7f0a0001;
         public static final int startGameBtn=0x7f0a000c;
+        public static final int updateBtn=0x7f0a000f;
     }
     public static final class layout {
         public static final int activity_end_game_scene=0x7f030000;
@@ -83,6 +84,7 @@ public final class R {
         public static final int title_activity_end_game_scene=0x7f060007;
         public static final int title_activity_game_scene=0x7f060006;
         public static final int title_activity_select_package_scene=0x7f060010;
+        public static final int updateBtnLabel=0x7f060013;
     }
     public static final class style {
         /** 

@@ -20,6 +20,8 @@
     <string name="title_activity_select_package_scene">SelectPackageScene</string>
     <string name="cLvl"></string>
     <string name="lLvl"></string>
+    <string name="updateBtnLabel">Update</string>
+    
     <integer-array name="game_data_array">
         <item>0</item>
         <item>0</item> 

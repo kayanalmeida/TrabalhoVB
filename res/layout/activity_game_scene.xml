@@ -54,15 +54,14 @@
         android:layout_marginBottom="14dp"
         android:text="@string/sendAnswerBtnLabel" />
 
-  
-    <ProgressBar
+    <SeekBar
         android:id="@+id/musicProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/AnswerBtn0"
         android:layout_below="@+id/gameSceneMsg"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="14dp" />
 
     <Button
         android:id="@+id/playMusicBtn"
@@ -70,7 +69,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/musicProgressBar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:background="@drawable/ic_action_slideshow" />
 
 </RelativeLayout>

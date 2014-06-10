@@ -13,9 +13,11 @@ import com.example.trabalhovb.R;
 
 @SuppressWarnings("unchecked")
 public class MapAdapter extends BaseAdapter {
-    private final ArrayList mData;
+    @SuppressWarnings("rawtypes")
+	private final ArrayList mData;
 
-    public MapAdapter(Map<String, ArrayList <Music>> map) {
+    @SuppressWarnings("rawtypes")
+	public MapAdapter(Map<String, ArrayList <String>> map) {
         mData = new ArrayList();
         mData.addAll(map.entrySet());
     }
@@ -26,8 +28,9 @@ public class MapAdapter extends BaseAdapter {
     }
 
     
+	@SuppressWarnings("rawtypes")
 	@Override
-    public Map.Entry<String, ArrayList <Music>> getItem(int position) {
+    public Map.Entry<String, ArrayList <String>> getItem(int position) {
         return (Map.Entry) mData.get(position);
     }
 
@@ -47,7 +50,7 @@ public class MapAdapter extends BaseAdapter {
             result = convertView;
         }
 
-        Map.Entry<String, ArrayList <Music>> item = getItem(position);
+        Map.Entry<String, ArrayList <String>> item = getItem(position);
 
         // TODO replace findViewById by ViewHolder
         ((TextView) result.findViewById(R.layout.activity_select_package_scene)).setText(item.getKey());
